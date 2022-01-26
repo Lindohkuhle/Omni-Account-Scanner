@@ -1,0 +1,57 @@
+﻿
+@model Omni_Account_Scanner.Models.StockExport
+@{
+    ViewBag.Title = "";
+}
+
+<div style="width:100%; height:100%">
+    
+    <div style="float:right;  align-content:flex-end">
+        <p>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <input type="submit" value="Search" />
+                @Html.TextBox("search")
+            }
+
+        </p>
+    </div>
+</div>
+
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+
+        <br /><br />
+              <table class="table table-responsive" style="width:400px">
+                  <tr>
+                      <th>
+                          Stock Code
+                      </th>
+                      <th>
+                          Description
+                      </th>
+                      <th>
+                          Price
+                      </th>
+                  </tr>
+                  <tr>
+                      <th>
+                          @Html.DisplayFor(x => x.stock_code)
+                      </th>
+                      <th>
+                          @Html.DisplayFor(x => x.stock_description)
+                      </th>
+                      <th>
+                          @Html.DisplayFor(x => x.incl_unit_selling_price)
+                      </th>
+                  </tr>
+                  <tr><td colspan="3">@ViewBag.EmptyMessageHolder</td></tr>
+              </table>
+    </div>
+</div>
+<div style="width:50%">
+    <img style="width:30%; height:30%" src=@Html.Raw("http://st.omniaccounts.co.za:55683/BranchLogo/HO.jpg?CompanyName=" + HttpUtility.UrlEncode(System.Configuration.ConfigurationManager.AppSettings["CompanyName"]) +"&UserName=Guest") alt="a description of the image">
+</div>
+
